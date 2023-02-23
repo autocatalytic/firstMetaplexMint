@@ -1,0 +1,1 @@
+Going through the Quicknode guide on minting NFT's with Metaplex v2, I think, and will go over v3 soon. Made some annotations and need to learn more about arweave. https://www.quicknode.com/guides/solana-development/how-to-mint-an-nft-on-solana-using-typescript
