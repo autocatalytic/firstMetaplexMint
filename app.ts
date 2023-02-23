@@ -6,8 +6,9 @@ import {
     toMetaplexFile, 
     toBigNumber } from "@metaplex-foundation/js";
 import * as fs from 'fs';
-import secret from './guideSecret.json';
+import secret from './guideSecret.json'; // need to create this first
 
+// Use devnet instead of quicknode, but QN worth a try in future
 const QUICKNODE_RPC = 'https://api.devnet.solana.com/'
 const SOLANA_CONNECTION = new Connection(QUICKNODE_RPC);
 const WALLET = Keypair.fromSecretKey(new Uint8Array(secret));
@@ -15,7 +16,7 @@ const WALLET = Keypair.fromSecretKey(new Uint8Array(secret));
 const METAPLEX = Metaplex.make(SOLANA_CONNECTION)
     .use(keypairIdentity(WALLET))
     .use(bundlrStorage({
-        address: 'https://devnet.bundlr.network',
+        address: 'https://devnet.bundlr.network', /* TODO arweave bundlr?? */
         providerUrl: QUICKNODE_RPC,
         timeout: 60000,
     }));
@@ -26,13 +27,13 @@ const CONFIG = {
     imgType: 'image/jpeg',
     imgName: 'Dreams of Summer',
     description: 'When you need the rain but the cold has you down',
-    attributes: [
+    attributes: [   // no idea what these attribs mean
         {trait_type: 'Speed', value: 'Medium'},
         {trait_type: 'Type', value: 'Outdoor'},
         {trait_type: 'Background', value: 'QuickNode Blue'}
     ],
     sellerFeeBasisPoints: 500, //500 bp = 5%
-    symbol: 'DOSPIX',
+    symbol: 'DOSPIX',   // Dreams of Summer Pictures
     creators: [
         {address: WALLET.publicKey, share: 100}
     ]
